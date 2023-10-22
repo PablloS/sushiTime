@@ -1,0 +1,18 @@
+.items__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.item {
+    color: var(--dark-purple);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.active {
+    transition: 0.3s;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
