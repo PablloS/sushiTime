@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.export {
+    margin-left: 10px;
+    color: var(--gray);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.wrapper::after {
+    position: absolute;
+    content: '';
+    width: 1088px;
+    height: 1px;
+    background-color: var(--dark-purple);
+    bottom: -15px;
+}
+
+.dropdown__container {
+    width: 127px;
+}

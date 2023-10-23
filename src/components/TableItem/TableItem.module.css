@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.data__item {
+    width: 146px;
+    color: var(--dark-purple);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.buttons__wrapper {
+    display: flex;
+    margin-left: 150px;
+}

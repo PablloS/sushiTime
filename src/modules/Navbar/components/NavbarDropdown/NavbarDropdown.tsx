@@ -12,7 +12,7 @@ const NavbarDropdown = ({ }: NavbarDropdownProps): JSX.Element => {
 
     useEffect(() => {
         getData(); 
-    })
+    }, [])
 
     const getData = async () => {
         const filialsData = await getFilials();

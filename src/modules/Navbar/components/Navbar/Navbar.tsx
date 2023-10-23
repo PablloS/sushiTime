@@ -5,7 +5,7 @@ import NavbarDropdown from "../NavbarDropdown/NavbarDropdown";
 import NavbarMenu from "../NavbarMenu/NavbarMenu";
 
 
-const Navbar = ({ }: NavbarProps): JSX.Element => {
+export const Navbar = ({ }: NavbarProps): JSX.Element => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.company}>
@@ -20,5 +20,3 @@ const Navbar = ({ }: NavbarProps): JSX.Element => {
         </div>
     )
 }
-
-export default Navbar; 

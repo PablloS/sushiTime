@@ -1,11 +1,13 @@
 import './App.css'
-import Navbar from './modules/Navbar/components/Navbar/Navbar'
+import EmptyPage from './pages/EmptyPage/EmptyPage'
+import TablePage from './pages/TablePage/TablePage'
 
 function App() {
 
   return (
     <>
-      <Navbar />
+      {/* <TablePage /> */}
+      <EmptyPage />
     </>
   )
 }
