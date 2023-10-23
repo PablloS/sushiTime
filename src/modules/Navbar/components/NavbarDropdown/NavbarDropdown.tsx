@@ -6,7 +6,7 @@ import { getFilials } from "../../api/getFilials";
 import { IFilial } from "../../interfaces/filial.interface";
 
 
-const NavbarDropdown = ({ }: NavbarDropdownProps): JSX.Element => {
+const NavbarDropdown = ({ onFilialChange}: NavbarDropdownProps): JSX.Element => {
 
     const [filials, setFilials] = useState<IFilial[]>([]);
 
@@ -14,14 +14,20 @@ const NavbarDropdown = ({ }: NavbarDropdownProps): JSX.Element => {
         getData(); 
     }, [])
 
+    const handleFilialChange = (id: number, _: string) => {
+        onFilialChange(id); 
+    }
+
     const getData = async () => {
         const filialsData = await getFilials();
-        setFilials(filialsData)
+        if (filialsData.length) {
+            setFilials(filialsData);
+        }
     }
 
     return (
         <div className={styles.wrapper}>
-            <Dropdown title="Филиалы" onValueChange={() => {}} defaultValue="" items={filials} />
+            <Dropdown title="Филиалы" onValueChange={handleFilialChange} defaultValue={"Выбор филиала"} items={filials} />
         </div>
     )
 }

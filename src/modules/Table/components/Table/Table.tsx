@@ -7,6 +7,8 @@ import { IMenuItem } from "../../interfaces/menu.interface";
 import TableDataView from "../TableDataView/TableDataView";
 import { IFilters } from "../../interfaces/filters.interface";
 import Pagination from "../../../../UI/Pagination/Pagination";
+import { useParams } from "react-router-dom";
+import { LIMIT } from "../../constants/menu.constants";
 
 
 export const Table = ({ }: TableProps): JSX.Element => {
@@ -14,10 +16,11 @@ export const Table = ({ }: TableProps): JSX.Element => {
     const [items, setItems] = useState<IMenuItem[]>([]);
     const [maxPage, setMaxPage] = useState<number>(1);
     const [currentFilters, setCurrentFilters] = useState<IFilters>({ name: '', filial: '', tt: '', active: null });
+    const { cityid } = useParams<{ cityid?: string }>();
 
     useEffect(() => {
-        getData(1)
-    }, []);
+        getData(1);
+    }, [cityid]);
 
     const handlePageChange = (page: number) => {
         getData(page, currentFilters);
@@ -29,10 +32,11 @@ export const Table = ({ }: TableProps): JSX.Element => {
     }
 
     const getData = async (page: number, filters?: IFilters) => {
+        let maxPage = 1;
         if (filters) {
             const filtredData = await getMenu({
-                filial_id: 1,
-                limit: 5,
+                filial_id: Number(cityid),
+                limit: LIMIT,
                 name: filters.name,
                 filial: filters.filial,
                 tt: filters.tt,
@@ -40,12 +44,17 @@ export const Table = ({ }: TableProps): JSX.Element => {
                 page: page
             });
             setItems(filtredData.data || []);
-            setMaxPage(filtredData.max_pages);
+            if (filtredData.max_pages) {
+                maxPage = filtredData.max_pages;
+            }
         } else {
-            const data = await getMenu({ filial_id: 1, limit: 5, page: page });
+            const data = await getMenu({ filial_id: Number(cityid), limit: LIMIT, page: page });
             setItems(data.data || []);
-            setMaxPage(data.max_pages);
+            if (data.max_pages) {
+                maxPage = data.max_pages;
+            }
         }
+        setMaxPage(maxPage); 
     }
 
     return (

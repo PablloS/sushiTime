@@ -4,10 +4,10 @@ import Menu from "../../../../components/Menu/Menu";
 import { menuData } from "../../data/menu.data";
 
 
-const NavbarMenu = ({}: NavbarMenuProps): JSX.Element => {
+const NavbarMenu = ({onItemChange}: NavbarMenuProps): JSX.Element => {
     return (
         <div className={styles.wrapper}>
-            <Menu items={menuData} onValueChange={() => {}} />
+            <Menu items={menuData} onValueChange={onItemChange} />
         </div>
     )
 }
